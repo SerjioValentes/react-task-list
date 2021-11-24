@@ -1,0 +1,94 @@
+.todo-wrapper {
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+}
+
+hr {
+    width: 30%;
+    color: #ffc4ff;
+}
+.map-task-list{
+
+}
+
+/*show and hide edit buttons*/
+.hide-edit-button {
+    overflow: hidden;
+}
+
+.show-edit-button {
+    overflow: visible;
+}
+
+/*END show and hide edit buttons*/
+
+/* All what im use in ul li elements*/
+.name-todo-list{
+    display: flex;
+    margin-right: 20px;
+}
+
+.cross {
+    text-decoration: line-through;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unCross {
+    align-items: center;
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+}
+
+/*END All what im use in ul li elements*/
+.input-and-button {
+    margin: 25px;
+}
+
+/*input and buttons*/
+.button-class{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.submit-button {
+    height: 40px;
+    background-color: #26a69a;
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
+
+.save-button {
+    height: 40px;
+    width: 15%;
+    background-color: #ce93d8;
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-button {
+    border: none;
+    padding: 7px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    background-color: #64d8cb;
+    color: black;
+}
+
+.edit-button {
+    border: none;
+    padding: 7px;
+    background-color: #00766c;
+    color: white;
+}
+
+.input {
+    border: #00766c 1px solid;
+    height: 35px;
+    /*width: 60%;*/
+}
+
+/*END input and  buttons*/
