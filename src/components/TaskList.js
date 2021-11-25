@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../styles/styles.css"
 
 function TaskList() {
@@ -14,23 +14,8 @@ function TaskList() {
     const [taskList, setTaskList] = useState([
 
         {
-            name: "Click on the task for check on to do",
+            name: "Click on the task to complete",
             id: "0004fg",
-            category: false
-        },
-        {
-            name: "Click on the ",
-            id: "0004ffg",
-            category: false
-        },
-        {
-            name: "Click on the task for check ",
-            id: "000fg",
-            category: false
-        },
-        {
-            name: "Click",
-            id: "021344ffg",
             category: false
         },
     ]);
@@ -42,17 +27,16 @@ function TaskList() {
             category: false,
         }
         setTaskList(taskList.concat(task));
-        setInput("")
-        console.log(input)
+        setInput("");
     }
 
     const handlerFinish = (name) => {
-        setStatusTask(!statusTask)
+        setStatusTask(!statusTask);
         var result = taskList.map((task, index) => {
             var res = {
                 name: task.name,
                 id: task.id,
-                category: statusTask,
+                category: statusTask
             }
             if (task.name === name) {
                 return res;
@@ -73,19 +57,12 @@ function TaskList() {
 
     const handlerEdit = (id) => {
         // setStatusTask(!statusTask)
-        setEditStatus(!editStatus)
+        setEditStatus(!editStatus);
         var inputPutt;
         var result = taskList.map((task, index) => {
-            // var res = {
-            //     name: task.name,
-            //     id: task.id,
-            //     category: statusTask,
-            // }
             if (task.id === id) {
                 inputPutt = task.name;
-                // return res;
             }
-            // return task;
         })
         setTaskEdit(inputPutt);
         setTaskList(result);
@@ -107,8 +84,8 @@ function TaskList() {
         }
         setTaskList(taskList.concat(task));
         setEditStatus(!editStatus);
-        setInput("")
-        setTaskEdit("")
+        setInput("");
+        setTaskEdit("");
     }
 
     // ----------------------adding delete button and edit to each task across map --------
@@ -120,21 +97,33 @@ function TaskList() {
                             className={taskList[index].category === true ? "cross" : "unCross"}
                             key={task.id}
                         >
-                            <div className="name-todo-list"
-                                onClick={() => {
-                                    handlerFinish(task.name)
-                                }}
+                            <div className="finished-todo-list"
+                                 onClick={() => {
+                                     handlerFinish(task.name)
+                                 }}
                             >
                                 {task.name}
                             </div>
                             <div>
                                 <div className="button-class">
-                                    <button className="delete-button"
-                                            onClick={() => handlerDelete(task.id)}>delete
-                                    </button>
+
+                                    {/*----------------Delete button--------------------*/}
+                                    <div>
+                                        <button className="delete-button"
+                                                onClick={() => handlerDelete(task.id)}>delete
+                                        </button>
+                                    </div>
+                                     {/*END----------------Delete button----------------*/}
+
                                     {editStatus === false ?
-                                        <button className="edit-button"
-                                                onClick={() => handlerEdit(task.id)}>Edit</button>
+
+                                        //----------------Edit button-------------------
+                                        <div>
+                                            <button className="edit-button"
+                                                    onClick={() => handlerEdit(task.id)}>Edit
+                                            </button>
+                                        </div>
+                                        //END----------------Edit button----------------
                                         :
                                         <div></div>
                                     }
@@ -151,29 +140,28 @@ function TaskList() {
     return (
         <div className="todo-wrapper">
             <div>
-
                 {/*--------------------------Input block with submit button------------------------*/}
                 {
                     editStatus === false ?
                         <div className="input-and-button">
-                            <input className="input"
+                            <input className="input-and-button__input"
                                    value={input}
                                    onChange={(event) => {
                                        setInput(event.target.value);
                                    }}/>
-                            <button className="submit-button"
+                            <button className="input-and-button__button"
                                     onClick={handlerAddTask}>submit
                             </button>
                         </div>
                         :
                         // --------------------------Save button with Input block  ------------------------
                         <div className="input-and-button">
-                            <input className="input"
+                            <input className="input-and-button__input"
                                    value={taskEdit}
                                    onChange={(event) => {
                                        setTaskEdit(event.target.value);
                                    }}/>
-                            <button className="save-button"
+                            <button className="input-and-button__save-button"
                                     onClick={saveEditTask}>Save
                             </button>
                         </div>
