@@ -7,3 +7,9 @@ This is my third task list ...
 ### What im used here:
     - UseState - yeah good training for useState hook
     - map and filter - but you can use what you want
+
+### What this app can do:
+    - add new task
+    - delete task
+    - edit task
+    - and marks task on finished
