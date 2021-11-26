@@ -7,9 +7,12 @@ This is my third task list ...
 ### What im used here:
     - UseState - yeah good training for useState hook
     - map and filter - but you can use what you want
+    - using a LocalStorage to save data in browser store
+    - and catch some errors with try, catch    
 
 ### What this app can do:
     - add new task
     - delete task
     - edit task
     - and marks task on finished
+    - and save data on reload page

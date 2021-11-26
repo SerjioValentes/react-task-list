@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/styles.css"
 
 function TaskList() {
@@ -12,13 +12,28 @@ function TaskList() {
     const [taskEdit, setTaskEdit] = useState("");
 
     const [taskList, setTaskList] = useState([
-
         {
             name: "Click on the task to complete",
             id: "0004fg",
             category: false
-        },
+        }
     ]);
+
+    // -----------------Сохранение в localStorage------------
+    useEffect(() => {
+        try {
+            const raw = localStorage.getItem("taskList") || []
+            setTaskList(JSON.parse(raw))
+        }
+        catch (e){
+            console.log(e)
+        }
+    },[])
+
+    useEffect(() => {
+        localStorage.setItem("taskList", JSON.stringify(taskList))
+    }, [taskList])
+    // END-----------------Сохранение в localStorage------------
 
     const handlerAddTask = () => {
         const task = {
@@ -56,7 +71,6 @@ function TaskList() {
 //END --------delete task------
 
     const handlerEdit = (id) => {
-        // setStatusTask(!statusTask)
         setEditStatus(!editStatus);
         var inputPutt;
         var result = taskList.map((task, index) => {
@@ -80,7 +94,7 @@ function TaskList() {
         const task = {
             name: taskEdit,
             id: new Date(),
-            category: false,
+            category: false
         }
         setTaskList(taskList.concat(task));
         setEditStatus(!editStatus);
@@ -90,12 +104,13 @@ function TaskList() {
 
     // ----------------------adding delete button and edit to each task across map --------
     const renderResult = taskList.map((task, index) => (
-            <div className="map-task-list">
+            <div className="map-task-list"
+                 key={task.id}
+            >
                 <ul>
                     <div>
                         <li
                             className={taskList[index].category === true ? "cross" : "unCross"}
-                            key={task.id}
                         >
                             <div className="finished-todo-list"
                                  onClick={() => {
@@ -136,6 +151,8 @@ function TaskList() {
         )
     )
     //END ----------------------adding delete button and edit to each task across map --------
+
+
 
     return (
         <div className="todo-wrapper">
