@@ -31,7 +31,10 @@ hr {
 }
 
 .map-task-list {
-
+    border: 1px #d9d9d9 solid;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
 }
 
 /*show and hide edit buttons*/
@@ -56,6 +59,7 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: left;
 }
 
 .unCross {
